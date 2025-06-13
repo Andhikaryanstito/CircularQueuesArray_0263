@@ -64,4 +64,9 @@ public:
         FRONT = FRONT +1;
     }
     }
+    void display(){
+        int front_position = FRONT;
+        int REAR_position = REAR;
+        
+    }
 };
