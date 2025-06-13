@@ -67,11 +67,12 @@ public:
     void display(){
         int front_position = FRONT;
         int REAR_position = REAR;
-        
+
     //cek apakah antrian kosong
     if (FRONT == -1){
         cout << " Queque is empty\n";
         return;
     }
+    cout << "\nElements in the queue are...\n";
     }
 };
