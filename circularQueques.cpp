@@ -6,5 +6,11 @@ Class Queques
     int FRONT, REAR, max =5;
     int queque_array[5];
 
+public:
+    Quewues()
+    {
+        FRONT = -1;
+        REAR = -1;
+    }
 
 }
