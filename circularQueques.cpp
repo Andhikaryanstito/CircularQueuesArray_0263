@@ -1,13 +1,87 @@
+/**
+ * @mainpage Documentation Circular Queues
+ *
+ * @section Introduction
+ * Project ini merupakan project struktur data
+ * menggunakan struktur data queues dengan pendekatan circular arrays.
+ *
+ * @section Operations
+ * Project ini memiliki beberapa operasi antara lain:
+ * 1. Insert
+ * 2. Delete
+ * 3. Display
+ *
+ * @section Cara Penggunaan
+ * Berikut beberapa menu yang bisa digunakan:
+ * 1. en queue
+ * 2. de queue
+ * 3. display
+ * 4. exit
+ *
+ * @author Profil
+ * - nama : ANDHIKA RYAN STITO
+ * - nim  : 20240140263
+ * - kelas: F
+
+ *@brief
+ *@version 0.1
+ *@date 2025-06-23
+
+ *
+ *@copyright andhika.ryan.ft24@mail.umyac.id (c) 2025
+ *
+ */
+
 #include <iostream>
 using namespace std;
 
-class Queue 
+/**
+ * @class Queues
+ * @brief class ini untuk operasi lengkap queue
+ */
+class Queues
 {
-    int FRONT, REAR, max = 5;
-    int queue_array[5];  
+private:
+    int FRONT;          ///< variable private front untuk menyimpan posisi depan antrian
+    int REAR;           ///< variable private rear untuk menyimpan posisi belakang antrian
+    int max = 5;        ///< variable private max untuk menyimpan ukuran maksimum antrian
+    int queue_array[5]; ///< variable private queue_array untuk menyimpan elemen antrian
 
 public:
-    Queue()  
+    /**
+     * @brief Construct a new Queues object
+     * set default queues null
+     * with front = -1 and rear = -1
+     */
+    Queues()
+    {
+        FRONT = -1;
+        REAR = -1;
+    }
+
+    /**
+     * @brief method untuk memasukkan data dalam antrian
+     * data dimasukkan dalam variable queue_array
+     */
+    void insert()
+    {
+        int num; ///< variable num untu menyimpan nilai
+        cout << "enter a number : ";
+        cin >> num;
+        cout << endl;
+    }
+};
+
+#include <iostream>
+using namespace std;
+
+class Queue
+{
+    int FRONT, REAR, max = 5;
+    int queue_array[5];
+
+public:
+    Queue()
     {
         FRONT = -1;
         REAR = -1;
@@ -23,7 +97,7 @@ public:
         if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1))
         {
             cout << "\nQueue overflow\n";
-            return; 
+            return;
         }
 
         // cek apakah antrian kosong
@@ -43,6 +117,11 @@ public:
 
         queue_array[REAR] = num;
     }
+
+    /**
+     * @brief method untuk menghapus data dalam antrian
+     * data dihapuskan dari dalam variable queue_array
+     */
     void remove()
     {
         if (FRONT == -1)
@@ -56,19 +135,22 @@ public:
         // cek jika antrian hanya memiliki satu elemen
         if (FRONT == REAR)
         {
-            FRONT = -1;
-            REAR = -1;
+            FRONT = -1; ///< variable front_position untuk menandakan posisi element pertama pada variabel front
+            REAR = -1; ///< variable rear_position untuk menyimpan posisi belakang antrian
         }
         else
         {
             // jika elemen yang dihapus berada di posisi terakhir array
             if (FRONT == max - 1)
                 FRONT = 0;
-            else 
+            else
                 FRONT = FRONT + 1;
         }
     }
-
+/**
+ * @brief method untuk menghapus data dalam antrian
+ *   * data dihapuskan dari dalam variable queue_array
+ */
     void display()
     {
         int FRONT_position = FRONT;
@@ -115,13 +197,22 @@ public:
     }
 };
 
+/**
+ * @brief method utama untuk menjalankan progam
+ * 
+ * @return int
+ */
+
+
 int main()
 {
-    Queue q;
-    char ch;
+    Queue q; ///<objek untuk menggunakan member yang ada pada class queues
+    char ch; ///<variable ch untuk menyimpan pilihan pada menu yang diberikan
 
-    while (true) {
-        try {
+    while (true)
+    {
+        try
+        {
             cout << "Menu" << endl;
             cout << "1. Implement insert operation" << endl;
             cout << "2. Implement delete operation" << endl;
@@ -133,28 +224,34 @@ int main()
 
             switch (ch)
             {
-                case '1': {
-                    q.insert();
-                    break;
-                }
-                case '2': {
-                    q.remove();
-                    break;
-                }
-                case '3': {
-                    q.display();
-                    break;
-                }
-                case '4': {
-                    return 0;
-                }
-                default: {
-                    cout << "Invalid option!!" << endl;
-                    break;
-                }
+            case '1':
+            {
+                q.insert();
+                break;
+            }
+            case '2':
+            {
+                q.remove();
+                break;
+            }
+            case '3':
+            {
+                q.display();
+                break;
+            }
+            case '4':
+            {
+                return 0;
+            }
+            default:
+            {
+                cout << "Invalid option!!" << endl;
+                break;
+            }
             }
         }
-        catch (exception &e) {
+        catch (exception &e)
+        {
             cout << "Check for the values entered." << endl;
         }
     }
